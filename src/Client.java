@@ -13,9 +13,8 @@ public class Client {
         System.out.println("Please select the number : \n" + "1 (Mean)\n" +
                 "2 (Med)\n" +
                 "3 (Mode)\n" +
-                "4-Multiply\n" +
-                "5-Pow\n" +
-                "6-Sqrt\n");
+                "4 (SD)\n" +
+                "5 (Deviation)\n");
 
         int operation = sc.nextInt();
 

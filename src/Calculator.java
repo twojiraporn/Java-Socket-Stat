@@ -1,5 +1,6 @@
 public class Calculator {
 
+
     public double avg(String[] arrOfInput){
         double sum = 0;
         double avg ;
@@ -10,7 +11,6 @@ public class Calculator {
         }
 
         avg = sum/arrOfInput.length;
-        System.out.println(avg);
         return avg;
     }
 
@@ -69,4 +69,47 @@ public class Calculator {
         }
         return  maxValue;
     }
+
+    public double standardDeviation(String[] arrOfInput){
+        double sum = 0;
+        double avg ;
+        double sd = 0 ;
+
+        int len = arrOfInput.length;
+
+        double[] srt = new double[len];
+
+        for (int i = 0; i < len; i++) {
+            srt[i] = Double.parseDouble(arrOfInput[i]);
+            sum += srt[i];
+        }
+
+        avg = sum/arrOfInput.length;
+        for(double num : srt) {
+            sd += Math.pow(num - avg, 2);
+        }
+        return Math.sqrt(sd/len) ;
+    }
+
+    public double deviation(String[] arrOfInput){
+        double sum = 0;
+        double avg ;
+        double sd = 0 ;
+
+        int len = arrOfInput.length;
+
+        double[] srt = new double[len];
+
+        for (int i = 0; i < len; i++) {
+            srt[i] = Double.parseDouble(arrOfInput[i]);
+            sum += srt[i];
+        }
+
+        avg = sum/arrOfInput.length;
+        for(double num : srt) {
+            sd += Math.pow(num - avg, 2);
+        }
+        return sd/len ;
+    }
+
 }

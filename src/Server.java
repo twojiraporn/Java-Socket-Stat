@@ -32,6 +32,12 @@ public class Server {
                 else if(operation == 3 ){
                     answer = cal.mode(arrOfInput);
                 }
+                else if(operation == 4 ){
+                    answer = cal.standardDeviation(arrOfInput);
+                }
+                else if(operation == 5 ){
+                    answer = cal.deviation(arrOfInput);
+                }
 
 
 

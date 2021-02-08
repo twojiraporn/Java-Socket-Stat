@@ -16,7 +16,6 @@ public class Server {
                 InputStreamReader isr = new InputStreamReader(is);
                 BufferedReader br = new BufferedReader(isr);
                 String clientMassage = br.readLine();
-                //System.out.println("Message received from client is " + clientMassage);
                 String receavedFromServer[]= clientMassage.split("/");
                 System.out.println("First  Number receive from client is : " + receavedFromServer[2]);
                 System.out.println("Second Number receive from client is : " + receavedFromServer[3]);
@@ -58,7 +57,6 @@ public class Server {
                     }
                 }
                 String returnMessage = Double.toString(answer);
-                //Sending the response back to the client.
                 OutputStream os = socket.getOutputStream();
                 OutputStreamWriter osw = new OutputStreamWriter(os);
                 BufferedWriter bw = new BufferedWriter(osw);

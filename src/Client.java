@@ -44,7 +44,6 @@ public class Client {
         try {
             socket = new Socket("localhost", 8999);
 
-            //Send the message to the server
             OutputStream os = socket.getOutputStream();
             OutputStreamWriter osw = new OutputStreamWriter(os);
             BufferedWriter bw = new BufferedWriter(osw);
@@ -56,17 +55,14 @@ public class Client {
             bw.flush();
             System.out.println("Message sent to the server : " + sendMessage);
 
-            //Get the return message from the server
             InputStream is = socket.getInputStream();
             InputStreamReader isr = new InputStreamReader(is);
             BufferedReader br = new BufferedReader(isr);
-            //System.out.println("");
             String message = br.readLine();
             System.out.println("Answer from server : " + message);
         } catch (Exception exception) {
             exception.printStackTrace();
         } finally {
-            //Closing the socket
             try {
                 socket.close();
             } catch (Exception e) {

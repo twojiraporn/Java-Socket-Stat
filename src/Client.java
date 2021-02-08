@@ -16,26 +16,19 @@ public class Client {
         Scanner scan = new Scanner(System.in);
         int operation = scan.nextInt();
         String massage = "";
-        switch (operation){
-            case 1:
-            case 3:
-            case 4:
-            case 2:
-            case 5: {
-                System.out.println("Enter first number : ");
-                double first = scan.nextDouble();
-                System.out.println("Enter second number : ");
-                double sec = scan.nextDouble();
-                massage = "/"+Integer.toString(operation)+"/"+ Double.toString(first)+"/"+Double.toString(sec)+"/";
-                break;
-            }
-            case 6: {
-                System.out.println("Enter number : ");
-                double first = scan.nextDouble();
-                double sec = 0;
-                massage = "/"+Integer.toString(operation)+"/"+ Double.toString(first)+"/"+Double.toString(sec)+"/";
-                break;
-            }
+
+        if(operation >=1 && operation <=5){
+            System.out.println("Enter first number : ");
+            double first = scan.nextDouble();
+            System.out.println("Enter second number : ");
+            double sec = scan.nextDouble();
+            massage = "/"+Integer.toString(operation)+"/"+ Double.toString(first)+"/"+Double.toString(sec)+"/";
+        }
+        else if(operation == 6 ){
+            System.out.println("Enter number : ");
+            double first = scan.nextDouble();
+            double sec = 0;
+            massage = "/"+Integer.toString(operation)+"/"+ Double.toString(first)+"/"+Double.toString(sec)+"/";
         }
 
 
@@ -67,7 +60,7 @@ public class Client {
                 socket.close();
             } catch (Exception e) {
                 e.printStackTrace();
-                System.out.println("Disconnected");
+                System.out.println("Wrong Input");
             }
         }
     }

@@ -24,38 +24,26 @@ public class Server {
                 double firstOperand = Double.valueOf(receavedFromServer[2]);
                 double secondOperand = Double.valueOf(receavedFromServer[3]);
                 double answer = 0;
-                switch (operation){
-                    case 1:
-                    {
-                        answer = firstOperand + secondOperand;
-                        break;
-                    }
-                    case 2:
-                    {
-                        answer = firstOperand - secondOperand;
-                        break;
-                    }
-                    case 3:
-                    {
-                        answer = firstOperand / secondOperand;
-                        break;
-                    }
-                    case 4:
-                    {
-                        answer = firstOperand * secondOperand;
-                        break;
-                    }
-                    case 5:
-                    {
-                        answer = Math.pow(firstOperand, secondOperand);
-                        break;
-                    }
-                    case 6:
-                    {
-                        answer = Math.sqrt(firstOperand);
-                        break;
-                    }
+                if(operation == 1){
+                    answer = firstOperand + secondOperand;
                 }
+                else if(operation == 2 ){
+                    answer = firstOperand - secondOperand;
+                }
+                else if(operation == 3 ){
+                    answer = firstOperand / secondOperand;
+                }
+                else if(operation == 4 ){
+                    answer = firstOperand * secondOperand;
+                }
+                else if(operation == 5 ){
+                    answer = Math.pow(firstOperand, secondOperand);
+                }
+                else if(operation == 6 ){
+                    answer = Math.sqrt(firstOperand);
+                }
+
+
                 String returnMessage = Double.toString(answer);
                 OutputStream os = socket.getOutputStream();
                 OutputStreamWriter osw = new OutputStreamWriter(os);

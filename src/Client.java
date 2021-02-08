@@ -47,9 +47,10 @@ public class Client {
             BufferedWriter bw = new BufferedWriter(osw);
 
 
-            bw.write(message);
+            String sendMessage = message + "\n";
+            bw.write(sendMessage);
             bw.flush();
-            System.out.println("Message sent to the server : " + message);
+            System.out.println("Message sent to the server : " + sendMessage);
 
             InputStream is = socket.getInputStream();
             InputStreamReader isr = new InputStreamReader(is);

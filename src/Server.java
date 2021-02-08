@@ -6,6 +6,7 @@ public class Server {
     private static Socket socket;
 
     public static void main(String[] args) {
+        double answer = - 0;
         try {
             ServerSocket serverSocket = new ServerSocket(8999);
             System.out.println("Server Started and listening to the port 8999\n");
@@ -17,23 +18,20 @@ public class Server {
                 BufferedReader br = new BufferedReader(isr);
                 String clientMassage = br.readLine();
                 String receivedFromClient[]= clientMassage.split("/");
-                System.out.println("First  Number receive from client is : " + receivedFromClient[2]);
+                System.out.println("All number that receive from client  : " + receivedFromClient[2]);
                 System.out.println("Request operation from client is : " + receivedFromClient[1]);
                 int operation = Integer.valueOf(receivedFromClient[1]);
-
-
-
                 String[] arrOfInput = receivedFromClient[2].split(" ");
-
-                double sum = 0;
-
-                for (String i : arrOfInput) {
-                    System.out.println(i);
-                    sum += Double.parseDouble(i);
+                Calculator cal = new Calculator();
+                if(operation == 1 ){
+                    answer = cal.avg(arrOfInput);
                 }
-
-                double answer = sum/arrOfInput.length;
-                System.out.println(answer);
+                else if(operation == 2 ){
+                    answer = cal.mean(arrOfInput);
+                }
+                else if(operation == 3 ){
+                    answer = cal.mode(arrOfInput);
+                }
 
 
 

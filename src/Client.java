@@ -11,8 +11,8 @@ public class Client {
         Scanner sc = new Scanner(System.in);
 
         System.out.println("Please select the number : \n" + "1 (Mean)\n" +
-                "2-Subtract\n" +
-                "3-Divide\n" +
+                "2 (Med)\n" +
+                "3 (Mode)\n" +
                 "4-Multiply\n" +
                 "5-Pow\n" +
                 "6-Sqrt\n");

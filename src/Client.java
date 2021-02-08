@@ -1,5 +1,6 @@
 import java.io.*;
 import java.net.*;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Client {
@@ -7,32 +8,36 @@ public class Client {
     private static Socket socket;
 
     public static void main(String args[]) {
-        System.out.println("Please select the operand : \n" + "1-Add\n" +
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("Please select the number : \n" + "1 (Mean)\n" +
                 "2-Subtract\n" +
                 "3-Divide\n" +
                 "4-Multiply\n" +
                 "5-Pow\n" +
                 "6-Sqrt\n");
-        Scanner scan = new Scanner(System.in);
-        int operation = scan.nextInt();
-        String massage = "";
 
-        if(operation >=1 && operation <=5){
-            System.out.println("Enter first number : ");
-            double first = scan.nextDouble();
-            System.out.println("Enter second number : ");
-            double sec = scan.nextDouble();
-            massage = "/"+Integer.toString(operation)+"/"+ Double.toString(first)+"/"+Double.toString(sec)+"/";
+        int operation = sc.nextInt();
+
+        System.out.println("Please fill the value : ");
+
+        String all = "";
+        String input = sc.next();
+        int checkFirst = 0;
+
+        while (!input.equals("end")) {
+            if (checkFirst == 0) {
+                all += input;
+                checkFirst++;
+            } else {
+                all += " ";
+                all += input;
+            }
+            input = sc.next();
         }
-        else if(operation == 6 ){
-            System.out.println("Enter number : ");
-            double first = scan.nextDouble();
-            double sec = 0;
-            massage = "/"+Integer.toString(operation)+"/"+ Double.toString(first)+"/"+Double.toString(sec)+"/";
-        }
 
-
-
+        String message = "/"+Integer.toString(operation)+"/"+ all+"/";
+        System.out.println(message);
 
         try {
             socket = new Socket("localhost", 8999);
@@ -42,17 +47,15 @@ public class Client {
             BufferedWriter bw = new BufferedWriter(osw);
 
 
-
-            String sendMessage = massage + "\n";
-            bw.write(sendMessage);
+            bw.write(message);
             bw.flush();
-            System.out.println("Message sent to the server : " + sendMessage);
+            System.out.println("Message sent to the server : " + message);
 
             InputStream is = socket.getInputStream();
             InputStreamReader isr = new InputStreamReader(is);
             BufferedReader br = new BufferedReader(isr);
-            String message = br.readLine();
-            System.out.println("Answer from server : " + message);
+            String msg = br.readLine();
+            System.out.println("Answer from server : " + msg);
         } catch (Exception exception) {
             exception.printStackTrace();
         } finally {

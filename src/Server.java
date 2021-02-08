@@ -18,30 +18,44 @@ public class Server {
                 String clientMassage = br.readLine();
                 String receavedFromServer[]= clientMassage.split("/");
                 System.out.println("First  Number receive from client is : " + receavedFromServer[2]);
-                System.out.println("Second Number receive from client is : " + receavedFromServer[3]);
+//                System.out.println("Second Number receive from client is : " + receavedFromServer[3]);
                 System.out.println("Request operation from client is : " + receavedFromServer[1]);
                 int operation = Integer.valueOf(receavedFromServer[1]);
-                double firstOperand = Double.valueOf(receavedFromServer[2]);
-                double secondOperand = Double.valueOf(receavedFromServer[3]);
-                double answer = 0;
-                if(operation == 1){
-                    answer = firstOperand + secondOperand;
+//                double firstOperand = Double.valueOf(receavedFromServer[2]);
+//                double secondOperand = Double.valueOf(receavedFromServer[3]);
+
+
+
+                String[] arrOfInput = receavedFromServer[2].split(" ");
+
+                double sum = 0;
+
+                for (String i : arrOfInput) {
+                    System.out.println(i);
+                    sum += Double.parseDouble(i);
                 }
-                else if(operation == 2 ){
-                    answer = firstOperand - secondOperand;
-                }
-                else if(operation == 3 ){
-                    answer = firstOperand / secondOperand;
-                }
-                else if(operation == 4 ){
-                    answer = firstOperand * secondOperand;
-                }
-                else if(operation == 5 ){
-                    answer = Math.pow(firstOperand, secondOperand);
-                }
-                else if(operation == 6 ){
-                    answer = Math.sqrt(firstOperand);
-                }
+
+                double answer = sum/arrOfInput.length;
+                System.out.println(answer);
+
+//                if(operation == 1){
+//                    answer = firstOperand + secondOperand;
+//                }
+//                else if(operation == 2 ){
+//                    answer = firstOperand - secondOperand;
+//                }
+//                else if(operation == 3 ){
+//                    answer = firstOperand / secondOperand;
+//                }
+//                else if(operation == 4 ){
+//                    answer = firstOperand * secondOperand;
+//                }
+//                else if(operation == 5 ){
+//                    answer = Math.pow(firstOperand, secondOperand);
+//                }
+//                else if(operation == 6 ){
+//                    answer = Math.sqrt(firstOperand);
+//                }
 
 
                 String returnMessage = Double.toString(answer);

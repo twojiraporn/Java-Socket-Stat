@@ -22,24 +22,35 @@ public class Server {
                 System.out.println("Request operation from client is : " + receivedFromClient[1]);
                 int operation = Integer.valueOf(receivedFromClient[1]);
                 String[] arrOfInput = receivedFromClient[2].split(" ");
-                Calculator cal = new Calculator();
-                if(operation == 1 ){
-                    answer = cal.avg(arrOfInput);
-                }
-                else if(operation == 2 ){
-                    answer = cal.mean(arrOfInput);
-                }
-                else if(operation == 3 ){
-                    answer = cal.mode(arrOfInput);
-                }
-                else if(operation == 4 ){
-                    answer = cal.standardDeviation(arrOfInput);
-                }
-                else if(operation == 5 ){
-                    answer = cal.deviation(arrOfInput);
+
+                if(operation>=1 && operation<=5){
+                    Calculator cal = new Calculator();
+                    if(operation == 1 ){
+                        answer = cal.avg(arrOfInput);
+                    }
+                    else if(operation == 2 ){
+                        answer = cal.mean(arrOfInput);
+                    }
+                    else if(operation == 3 ){
+                        answer = cal.mode(arrOfInput);
+                    }
+                    else if(operation == 4 ){
+                        answer = cal.standardDeviation(arrOfInput);
+                    }
+                    else if(operation == 5 ){
+                        answer = cal.deviation(arrOfInput);
+                    }
                 }
 
-
+                else{
+                    String returnMessage = "Wrong Input";
+                    OutputStream os = socket.getOutputStream();
+                    OutputStreamWriter osw = new OutputStreamWriter(os);
+                    BufferedWriter bw = new BufferedWriter(osw);
+                    bw.write(returnMessage + "\n");
+                    System.out.println("Answer sent to the client is " + returnMessage);
+                    bw.flush();
+                }
 
                 String returnMessage = Double.toString(answer);
                 OutputStream os = socket.getOutputStream();
@@ -50,6 +61,7 @@ public class Server {
                 bw.flush();
                 System.out.println("Calculated Success.");
             }
+
         } catch (Exception e) {
             e.printStackTrace();
         } finally {

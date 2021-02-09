@@ -83,7 +83,6 @@ public class Calculator {
             srt[i] = Double.parseDouble(arrOfInput[i]);
             sum += srt[i];
         }
-
         avg = sum/arrOfInput.length;
         for(double num : srt) {
             sd += Math.pow(num - avg, 2);
@@ -95,16 +94,12 @@ public class Calculator {
         double sum = 0;
         double avg ;
         double sd = 0 ;
-
         int len = arrOfInput.length;
-
         double[] srt = new double[len];
-
         for (int i = 0; i < len; i++) {
             srt[i] = Double.parseDouble(arrOfInput[i]);
             sum += srt[i];
         }
-
         avg = sum/arrOfInput.length;
         for(double num : srt) {
             sd += Math.pow(num - avg, 2);

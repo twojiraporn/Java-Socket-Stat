@@ -18,7 +18,7 @@ public class Client {
 
         int operation = sc.nextInt();
 
-        System.out.println("Please fill the value : ");
+        System.out.println("Please fill value and end with \"end\".");
 
         String all = "";
         String input = sc.next();
@@ -36,7 +36,7 @@ public class Client {
         }
 
         String message = "/"+Integer.toString(operation)+"/"+ all+"/";
-        System.out.println(message);
+        //System.out.println(message);
 
         try {
             socket = new Socket("127.0.0.1", 8999);
@@ -49,6 +49,7 @@ public class Client {
             String sendMessage = message + "\n";
             bw.write(sendMessage);
             bw.flush();
+            System.out.println();
             System.out.println("Message sent to the server : " + sendMessage);
 
             InputStream is = socket.getInputStream();

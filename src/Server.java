@@ -17,28 +17,23 @@ public class Server {
                 InputStreamReader isr = new InputStreamReader(is);
                 BufferedReader br = new BufferedReader(isr);
                 String clientMassage = br.readLine();
-                String receivedFromClient[]= clientMassage.split("/");
-                System.out.println("All number that receive from client  : " + receivedFromClient[2]);
+                String receivedFromClient[] = clientMassage.split("/");
+                System.out.println("All number that receive from client : " + receivedFromClient[2]);
                 System.out.println("Request operation from client is : " + receivedFromClient[1]);
                 int operation = Integer.valueOf(receivedFromClient[1]);
                 String[] arrOfInput = receivedFromClient[2].split(" ");
 
-
-                if(operation>=1 && operation<=5){
+                if (operation >= 1 && operation <= 5) {
                     Calculator cal = new Calculator();
-                    if(operation == 1 ){
+                    if (operation == 1) {
                         answer = cal.avg(arrOfInput);
-                    }
-                    else if(operation == 2 ){
+                    } else if (operation == 2) {
                         answer = cal.mean(arrOfInput);
-                    }
-                    else if(operation == 3 ){
+                    } else if (operation == 3) {
                         answer = cal.mode(arrOfInput);
-                    }
-                    else if(operation == 4 ){
+                    } else if (operation == 4) {
                         answer = cal.standardDeviation(arrOfInput);
-                    }
-                    else if(operation == 5 ){
+                    } else if (operation == 5) {
                         answer = cal.deviation(arrOfInput);
                     }
                     String returnMessage = Double.toString(answer);
@@ -46,18 +41,15 @@ public class Server {
                     OutputStreamWriter osw = new OutputStreamWriter(os);
                     BufferedWriter bw = new BufferedWriter(osw);
                     bw.write(returnMessage + "\n");
-                    System.out.println("Answer sent to the client is " + returnMessage);
+                    System.out.println("Answer sent to the client : " + returnMessage + "\n");
                     bw.flush();
-                    System.out.println("Calculated Success.");
-                }
-
-                else{
-                    String returnMessage = "Wrong Input";
+                } else {
+                    String returnMessage = "Wrong input operation.";
                     OutputStream os = socket.getOutputStream();
                     OutputStreamWriter osw = new OutputStreamWriter(os);
                     BufferedWriter bw = new BufferedWriter(osw);
                     bw.write(returnMessage + "\n");
-                    System.out.println("Answer sent to the client is " + returnMessage);
+                    System.out.println("Answer sent to the client : " + returnMessage + "\n");
                     bw.flush();
                 }
             }
@@ -66,10 +58,16 @@ public class Server {
             e.printStackTrace();
         } finally {
             try {
+                String returnMessage = "Server shut down.";
+                OutputStream os = socket.getOutputStream();
+                OutputStreamWriter osw = new OutputStreamWriter(os);
+                BufferedWriter bw = new BufferedWriter(osw);
+                bw.write(returnMessage + "\n");
+                System.out.println("Answer sent to the client : " + returnMessage + "\n");
+                bw.flush();
                 socket.close();
-                System.out.println("Client Disconnected");
             } catch (Exception e) {
-                System.out.println("hello");
+                System.out.println("Sever shut down");
             }
         }
     }

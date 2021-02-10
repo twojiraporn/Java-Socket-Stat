@@ -4,10 +4,11 @@ public class Calculator {
     public double avg(String[] arrOfInput){
         double sum = 0;
         double avg ;
-
-        for (String i : arrOfInput) {
-            System.out.println(i);
-            sum += Double.parseDouble(i);
+        int len = arrOfInput.length;
+        double[] srt = new double[len];
+        for (int i = 0; i < len; i++) {
+            srt[i] = Double.parseDouble(arrOfInput[i]);
+            sum+=srt[i];
         }
 
         avg = sum/arrOfInput.length;
@@ -23,6 +24,7 @@ public class Calculator {
 
         for (int i = 0; i < len; i++) {
             srt[i] = Double.parseDouble(arrOfInput[i]);
+
         }
         for (int i = 0; i < len; i++) {
             for (int j = 1; j < (len - i); j++) {

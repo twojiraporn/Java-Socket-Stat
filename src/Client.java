@@ -39,7 +39,7 @@ public class Client {
         System.out.println(message);
 
         try {
-            socket = new Socket("localhost", 8999);
+            socket = new Socket("127.0.0.1", 8999);
 
             OutputStream os = socket.getOutputStream();
             OutputStreamWriter osw = new OutputStreamWriter(os);

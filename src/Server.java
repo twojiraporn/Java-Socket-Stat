@@ -6,7 +6,7 @@ public class Server {
     private static Socket socket;
 
     public static void main(String[] args) {
-        double answer = - 0;
+        double answer = 0;
         try {
             ServerSocket serverSocket = new ServerSocket(8999);
             System.out.println("Server Started and listening to the port 8999\n");
@@ -22,6 +22,7 @@ public class Server {
                 System.out.println("Request operation from client is : " + receivedFromClient[1]);
                 int operation = Integer.valueOf(receivedFromClient[1]);
                 String[] arrOfInput = receivedFromClient[2].split(" ");
+
 
                 if(operation>=1 && operation<=5){
                     Calculator cal = new Calculator();
@@ -40,6 +41,14 @@ public class Server {
                     else if(operation == 5 ){
                         answer = cal.deviation(arrOfInput);
                     }
+                    String returnMessage = Double.toString(answer);
+                    OutputStream os = socket.getOutputStream();
+                    OutputStreamWriter osw = new OutputStreamWriter(os);
+                    BufferedWriter bw = new BufferedWriter(osw);
+                    bw.write(returnMessage + "\n");
+                    System.out.println("Answer sent to the client is " + returnMessage);
+                    bw.flush();
+                    System.out.println("Calculated Success.");
                 }
 
                 else{
@@ -51,15 +60,6 @@ public class Server {
                     System.out.println("Answer sent to the client is " + returnMessage);
                     bw.flush();
                 }
-
-                String returnMessage = Double.toString(answer);
-                OutputStream os = socket.getOutputStream();
-                OutputStreamWriter osw = new OutputStreamWriter(os);
-                BufferedWriter bw = new BufferedWriter(osw);
-                bw.write(returnMessage + "\n");
-                System.out.println("Answer sent to the client is " + returnMessage);
-                bw.flush();
-                System.out.println("Calculated Success.");
             }
 
         } catch (Exception e) {

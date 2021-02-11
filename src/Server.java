@@ -44,14 +44,16 @@ public class Server {
                     BufferedWriter bw = new BufferedWriter(osw);
                     bw.write(returnMessage + "\n");
                     System.out.println("Answer sent to the client : " + returnMessage + "\n");
+                    System.out.println("Client disconnected : \n");
                     bw.flush();
-                } else {
+                } else if(operation>=7 || operation==0){
                     String returnMessage = "Wrong input operation.";
                     OutputStream os = socket.getOutputStream();
                     OutputStreamWriter osw = new OutputStreamWriter(os);
                     BufferedWriter bw = new BufferedWriter(osw);
                     bw.write(returnMessage + "\n");
                     System.out.println("Answer sent to the client : " + returnMessage + "\n");
+                    System.out.println("Client disconnected : \n");
                     bw.flush();
                 }
             }

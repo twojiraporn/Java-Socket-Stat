@@ -9,33 +9,49 @@ public class Client {
 
     public static void main(String args[]) {
         Scanner sc = new Scanner(System.in);
+        String message="";
 
         System.out.println("Please select the number : \n" + "1 (Mean)\n" +
                 "2 (Med)\n" +
                 "3 (Mode)\n" +
                 "4 (SD)\n" +
                 "5 (Deviation)\n" +
-                "6 (Factorial)\n");
+                "6 (Factorial)\n" );
 
         int operation = sc.nextInt();
-        String all = "";
-        System.out.println("Please fill value and end with \"end\".");
 
-        String input = sc.next();
-        int checkFirst = 0;
+        if(operation>=1 && operation<=5){
+            String all = "";
+            System.out.println("Please fill value and end with \"end\".");
 
-        while (!input.equals("end")) {
-            if (checkFirst == 0) {
-                all += input;
-                checkFirst++;
-            } else {
-                all += " ";
-                all += input;
+            String input = sc.next();
+            int checkFirst = 0;
+
+            while (!input.equals("end")) {
+                if (checkFirst == 0) {
+                    all += input;
+                    checkFirst++;
+                } else {
+                    all += " ";
+                    all += input;
+                }
+                input = sc.next();
             }
-            input = sc.next();
+            message = "/"+Integer.toString(operation)+"/"+ all+"/";
         }
 
-        String message = "/"+Integer.toString(operation)+"/"+ all+"/";
+        else if(operation == 6){
+            System.out.println("Please fill only single value.");
+            String input = sc.next();
+            input += " ";
+            message = "/"+Integer.toString(operation)+"/"+ input +"/";
+        }
+
+        else if(operation>=7 || operation==0) {
+            System.out.println("Wrong input operation.");
+            message = "/"+Integer.toString(operation)+"/"+ 0 +"/";
+        }
+
         //System.out.println(message);
 
         try {

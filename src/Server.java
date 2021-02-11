@@ -50,7 +50,7 @@ public class Server {
                     System.out.println("Answer sent to the client : " + returnMessage + "\n");
                     bw.flush();
                 } else if(operation>=7 || operation<0 ){
-                    String returnMessage = "You input wrong operation.";
+                    String returnMessage = "Invalid operation.";
                     OutputStream os = socket.getOutputStream();
                     OutputStreamWriter osw = new OutputStreamWriter(os);
                     BufferedWriter bw = new BufferedWriter(osw);

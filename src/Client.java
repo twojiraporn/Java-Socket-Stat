@@ -14,9 +14,9 @@ public class Client {
                 String message = "";
 
                 System.out.println("Please select the number : \n" + "1 (Mean)\n" +
-                        "2 (Med)\n" +
+                        "2 (Median)\n" +
                         "3 (Mode)\n" +
-                        "4 (SD)\n" +
+                        "4 (Standard Deviation)\n" +
                         "5 (Deviation)\n" +
                         "6 (Factorial)\n" +
                         "0 (Exit)\n" );
@@ -30,7 +30,7 @@ public class Client {
                     String input = sc.next();
                     int checkFirst = 0;
 
-                    while (!input.equals("end")) {
+                    while (!input.equals("end"))  {
                         if (checkFirst == 0) {
                             all += input;
                             checkFirst++;
@@ -47,7 +47,6 @@ public class Client {
                     input += " ";
                     message = "/" + Integer.toString(operation) + "/" + input + "/";
                 } else if (operation >= 7) {
-                    //System.out.println("Wrong input operation.");
                     message = "/" + Integer.toString(operation) + "/" + 0 + "/";
                 }
                 else if(operation == 0){
@@ -59,22 +58,16 @@ public class Client {
                     OutputStreamWriter osw = new OutputStreamWriter(os);
                     BufferedWriter bw = new BufferedWriter(osw);
 
-
                     String sendMessage = message + "\n";
                     bw.write(sendMessage);
                     bw.flush();
                     break;
                 }
-
-                //System.out.println(message);
-
-                //try {
                 socket = new Socket("127.0.0.1", 8999);
 
                 OutputStream os = socket.getOutputStream();
                 OutputStreamWriter osw = new OutputStreamWriter(os);
                 BufferedWriter bw = new BufferedWriter(osw);
-
 
                 String sendMessage = message + "\n";
                 bw.write(sendMessage);
@@ -87,7 +80,6 @@ public class Client {
                 BufferedReader br = new BufferedReader(isr);
                 String msg = br.readLine();
                 System.out.println("Answer from server : " + msg +"\n");
-                // }
             }
         }
         catch (Exception exception) {

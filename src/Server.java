@@ -23,7 +23,7 @@ public class Server {
                 int operation = Integer.valueOf(receivedFromClient[1]);
                 String[] arrOfInput = receivedFromClient[2].split(" ");
 
-                if (operation >= 1 && operation <= 5) {
+                if (operation >= 1 && operation <= 6) {
                     Calculator cal = new Calculator();
                     if (operation == 1) {
                         answer = cal.avg(arrOfInput);
@@ -35,6 +35,8 @@ public class Server {
                         answer = cal.standardDeviation(arrOfInput);
                     } else if (operation == 5) {
                         answer = cal.deviation(arrOfInput);
+                    } else if (operation == 6) {
+                        answer = cal.factorial(arrOfInput);
                     }
                     String returnMessage = Double.toString(answer);
                     OutputStream os = socket.getOutputStream();

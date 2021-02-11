@@ -14,13 +14,13 @@ public class Client {
                 "2 (Med)\n" +
                 "3 (Mode)\n" +
                 "4 (SD)\n" +
-                "5 (Deviation)\n");
+                "5 (Deviation)\n" +
+                "6 (Factorial)\n");
 
         int operation = sc.nextInt();
-
+        String all = "";
         System.out.println("Please fill value and end with \"end\".");
 
-        String all = "";
         String input = sc.next();
         int checkFirst = 0;
 

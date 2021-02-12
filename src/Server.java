@@ -2,6 +2,9 @@ import java.io.*;
 import java.math.BigInteger;
 import java.net.*;
 
+// นางสาว จิราพร โขวุฒิธรรม 6110401587 sec 1
+// นาย สิรวิชญ์ ยุวศิรินันท์ 6110406244 sec 1
+
 public class Server {
 
     private static Socket socket;

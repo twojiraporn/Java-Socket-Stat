@@ -1,5 +1,8 @@
 import java.math.BigInteger;
 
+// นางสาว จิราพร โขวุฒิธรรม 6110401587 sec 1
+// นาย สิรวิชญ์ ยุวศิรินันท์ 6110406244 sec 1
+
 public class Calculator {
 
 

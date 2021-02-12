@@ -3,6 +3,9 @@ import java.net.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+// นางสาว จิราพร โขวุฒิธรรม 6110401587 sec 1
+// นาย สิรวิชญ์ ยุวศิรินันท์ 6110406244 sec 1
+
 public class Client {
 
     private static Socket socket;

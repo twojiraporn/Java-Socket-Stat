@@ -1,3 +1,5 @@
+import java.math.BigInteger;
+
 public class Calculator {
 
 
@@ -109,20 +111,26 @@ public class Calculator {
         return sd/len ;
     }
 
-    public double factorial(String[] arrOfInput){
-        double fact = 1;
-        double num;
-        int len = arrOfInput.length;
-        double[] srt = new double[len];
-        for (int i = 0; i < len; i++) {
-            srt[i] = Double.parseDouble(arrOfInput[i]);
-        }
-        num = srt[0];
-        for(int i=1;i<=num;i++){
-            fact=fact*i;
-        }
-        return fact;
+    public BigInteger factorial(String[] arrOfInput){
+//        double fact = 1;
+//        double num;
+//        int len = arrOfInput.length;
+//        double[] srt = new double[len];
+//        for (int i = 0; i < len; i++) {
+//            srt[i] = Double.parseDouble(arrOfInput[i]);
+//        }
+//        num = srt[0];
+//        for(int i = 1; i <= num; i++){
+//            fact=fact*i;
+//        }
+//        return fact;
 
+        BigInteger f = new BigInteger("1"); // Or BigInteger.ONE
+
+        for (int i = 2; i <= Integer.parseInt(arrOfInput[0]); i++)
+            f = f.multiply(BigInteger.valueOf(i));
+
+        return f;
     }
 
 }

@@ -1,4 +1,5 @@
 import java.io.*;
+import java.math.BigInteger;
 import java.net.*;
 
 public class Server {
@@ -7,6 +8,7 @@ public class Server {
 
     public static void main(String[] args) {
         double answer = 0;
+        BigInteger fact = BigInteger.ZERO;
         int count = 0;
         try {
             ServerSocket serverSocket = new ServerSocket(8999);
@@ -40,9 +42,16 @@ public class Server {
                     } else if (operation == 5) {
                         answer = cal.deviation(arrOfInput);
                     } else if (operation == 6) {
-                        answer = cal.factorial(arrOfInput);
+                        fact = cal.factorial(arrOfInput);
                     }
-                    String returnMessage = Double.toString(answer);
+
+                    String returnMessage = "";
+
+                    if (operation >= 1 && operation <= 5) {
+                        returnMessage = Double.toString(answer);
+                    } else if (operation == 6) {
+                        returnMessage = fact.toString();
+                    }
                     OutputStream os = socket.getOutputStream();
                     OutputStreamWriter osw = new OutputStreamWriter(os);
                     BufferedWriter bw = new BufferedWriter(osw);

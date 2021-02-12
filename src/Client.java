@@ -17,11 +17,23 @@ public class Client {
                         "2 (Median)\n" +
                         "3 (Mode)\n" +
                         "4 (Standard Deviation)\n" +
-                        "5 (Deviation)\n" +
+                        "5 (Variance)\n" +
                         "6 (Factorial)\n" +
                         "0 (Exit)\n" );
 
                 int operation = sc.nextInt();
+
+                while (operation < 0 | operation > 6) {
+                    System.out.println("You can select only 0 to 6.");
+                    System.out.println("Please select the number : \n" + "1 (Mean)\n" +
+                            "2 (Median)\n" +
+                            "3 (Mode)\n" +
+                            "4 (Standard Deviation)\n" +
+                            "5 (Variance)\n" +
+                            "6 (Factorial)\n" +
+                            "0 (Exit)\n" );
+                    operation = sc.nextInt();
+                }
 
                 if (operation >= 1 && operation <= 5) {
                     String all = "";

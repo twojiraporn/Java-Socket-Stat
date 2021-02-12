@@ -93,7 +93,7 @@ public class Server {
                 bw.write(returnMessage + "\n");
                 System.out.println("Answer sent to the client : " + returnMessage + "\n");
                 bw.flush();
-                socket.close();
+//                socket.close();
             } catch (Exception e) {
                 System.out.println("Sever shut down");
             }

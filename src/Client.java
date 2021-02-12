@@ -43,9 +43,26 @@ public class Client {
                     System.out.println("Please fill value and end with \"end\".");
 
                     String input = sc.next();
+
                     int checkFirst = 0;
 
+                    if (checkFirst == 0 && input.equals("end")) {
+                        System.out.println("You already exit");
+                        message = "/" + Integer.toString(operation) + "/" + 0 + "/";
+                        socket = new Socket("127.0.0.1", 8999);
+
+                        OutputStream os = socket.getOutputStream();
+                        OutputStreamWriter osw = new OutputStreamWriter(os);
+                        BufferedWriter bw = new BufferedWriter(osw);
+
+                        String sendMessage = message + "\n";
+                        bw.write(sendMessage);
+                        bw.flush();
+                        break;
+                    }
+
                     while (!input.equals("end"))  {
+
                         if (checkFirst == 0) {
                             all += input;
                             checkFirst++;
